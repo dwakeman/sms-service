@@ -1,3 +1,19 @@
+/**
+ * Copyright 2020 IBM Corp. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the 'License');
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an 'AS IS' BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ */
+
 // import dependencies and initialize express
 const express = require('express');
 const path = require('path');
@@ -8,6 +24,7 @@ const appVersion = require('../package').version;
 const logger = log4js.getLogger(appName);
 const healthRoutes = require('./routes/health-route');
 const swaggerRoutes = require('./routes/swagger-route');
+const apiV1Routes = require('./api-v1/routes/api-route');
 logger.level = process.env.LOG_LEVEL ? process.env.LOG_LEVEL : 'info';
 logger.info('Log level is ' + logger.level);
 logger.info('App Version is ' + appVersion);
@@ -21,6 +38,7 @@ app.use(bodyParser.json());
 // routes and api calls
 app.use('/health', healthRoutes);
 app.use('/swagger', swaggerRoutes);
+app.use('/api/v1', apiV1Routes);
 
 // default path to serve up index.html (single page application)
 app.all('', (req, res) => {
