@@ -2,9 +2,15 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
-
+const log4js = require('log4js');
+const appName = require('../package').name;
+const appVersion = require('../package').version;
+const logger = log4js.getLogger(appName);
 const healthRoutes = require('./routes/health-route');
 const swaggerRoutes = require('./routes/swagger-route');
+logger.level = process.env.LOG_LEVEL ? process.env.LOG_LEVEL : 'info';
+logger.info('Log level is ' + logger.level);
+logger.info('App Version is ' + appVersion);
 
 const app = express();
 
@@ -24,8 +30,8 @@ app.all('', (req, res) => {
 // start node server
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
-  console.log(`App UI available http://localhost:${port}`);
-  console.log(`Swagger UI available http://localhost:${port}/swagger/api-docs`);
+  logger.info(`App UI available http://localhost:${port}`);
+  logger.info(`Swagger UI available http://localhost:${port}/swagger/api-docs`);
 });
 
 // error handler for unmatched routes or api calls
