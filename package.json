@@ -14,11 +14,6 @@
     "fix": "eslint --ignore-path .gitignore . --fix",
     "test": "nyc mocha test --recursive --exit"
   },
-//  "husky": {
-//    "hooks": {
-//      "pre-commit": "npm run lint && npm run test && npm run check-coverage"
-//    }
-//  },
   "nyc": {
     "check-coverage": true,
     "per-file": true,

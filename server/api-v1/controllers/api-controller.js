@@ -26,15 +26,15 @@ const api = {};
 
 // send Messages
 api.postMessages = async (req, res) => {
- 
+
     const logname = '[postMessages]';
     logger.debug(`${logname} entering function...`);
     logger.trace(`${logname} The request body: ` + JSON.stringify(req.body));
 
-    //this will be the response object send back to the caller.
+    // this will be the response object send back to the caller.
     let response = {};
    
-    //Need to get the API Key
+    // Need to get the API Key
     const iamApiKey = process.env.IAM_API_KEY;
     if (!iamApiKey) {
         response.body = {
