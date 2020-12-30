@@ -28,6 +28,53 @@ logger.info('[api-v1-controller] - The IBM Cloud URL is ' + ibmcloudUrl);
 const util = {};
 
 
+util.validateInput = function(params) {
+
+
+    let response = {
+        valid: true,
+        errors: []
+    }
+
+    if (!params.secretId) {
+        response.valid = false;
+        response.errors.push({
+            message: "Access key is missing"
+        });
+    }
+
+    if (!params.authToken) {
+        response.valid = false;
+        response.errors.push({
+            message: "Auth token is missing"
+        });
+    }
+
+    if (!params.fromNumber) {
+        response.valid = false;
+        response.errors.push({
+            message: "from phone number is missing"
+        });
+    }
+
+    if (!params.toNumber) {
+        response.valid = false;
+        response.errors.push({
+            message: "to phone number is missing"
+        });
+    }
+
+    if (!params.smsMessage) {
+        response.valid = false;
+        response.errors.push({
+            message: "SMS message is missing"
+        });
+    }
+
+    return response;
+}
+
+
 /**
  * getAuthToken() exchanges an IBM Cloud API Key for an IAM oauth token for authentication to IBM APIs
  * 

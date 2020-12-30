@@ -1,6 +1,6 @@
 {
   "name": "sms-service",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Microservice for sending SMS messages using Twilio",
   "private": true,
   "engines": {
@@ -34,6 +34,7 @@
     "express": "^4.17.1",
     "ibm-cloud-env": "^0",
     "log4js": "^6.3.0",
+    "twilio": "^3.0.0",
     "swagger-ui-express": "^4.1.5"
   },
   "devDependencies": {

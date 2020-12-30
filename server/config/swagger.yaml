@@ -1,0 +1,77 @@
+swagger: '2.0'
+
+info:
+  version: "0.0.1"
+  title: SMS Service API
+
+consumes:
+  - application/json
+
+produces:
+  - application/json
+
+paths:
+  /health:
+    get:
+      operationId: get
+      description: Get health status of SMS Service API
+      responses:
+        200:
+          description: "Health check response"
+          schema:
+            $ref: "#/definitions/healthResponse"
+          examples:
+            application/json: { "status": "UP"}
+  /api/v1/messages:
+   post:
+      operationId: postMessages
+      description: Send an SMS Message
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "the message to be sent"
+        required: true
+        schema:
+          $ref: "#/definitions/sendMessageRequest"
+      responses:
+        200:
+          description: "Send Message Response"
+          schema:
+            $ref: "#/definitions/sendMessageResponse"
+
+definitions:
+  healthResponse:
+    type: "object"
+    properties:
+      status:
+        type: "string"
+  sendMessageRequest:
+    type: "object"
+    properties:
+      access_key:
+        type: "string"
+      auth_token:
+        type: "string"
+      from:
+        type: "string"
+      to:
+        type: "string"
+      message:
+        type: "string"
+  sendMessageResponse:
+    type: "object"
+    properties:
+      status:
+        type: "string"
+      message:
+        type: "string"
+      from:
+        type: "string"
+      to:
+        type: "string"
+      dateCreated:
+        type: "string"
