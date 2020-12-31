@@ -15,7 +15,7 @@
  */
 
 const log4js = require('log4js');
-const logger = log4js.getLogger('sms-service [api-v1-controller]');
+const logger = log4js.getLogger('[APP] sms-service [api-v1-controller]');
 logger.level = process.env.LOG_LEVEL ? process.env.LOG_LEVEL : 'info';
 const util = require('../helpers/util');
 

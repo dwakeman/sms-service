@@ -16,12 +16,18 @@
 
  // import dependencies and initialize the express router
 const express = require('express');
+const swaggerUi = require('swagger-ui-express');
 const ApiController = require('../controllers/api-controller.js');
-
+const appVersion = require('../../../package').version;
 const router = express.Router();
+const swaggerDoc = require('../config/swagger');
+
+// update the app version in the swagger doc from package.json
+swaggerDoc.info.version = appVersion;
 
 // define routes
 router.get('/messages', ApiController.getMessages);
 router.post('/messages', ApiController.postMessages);
+router.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
 
 module.exports = router;

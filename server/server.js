@@ -21,7 +21,7 @@ const bodyParser = require('body-parser');
 const log4js = require('log4js');
 const appName = require('../package').name;
 const appVersion = require('../package').version;
-const logger = log4js.getLogger(appName);
+const logger = log4js.getLogger('[APP] ' + appName);
 const healthRoutes = require('./routes/health-route');
 const swaggerRoutes = require('./routes/swagger-route');
 const apiV1Routes = require('./api-v1/routes/api-route');
@@ -37,7 +37,8 @@ app.use(bodyParser.json());
 
 // routes and api calls
 app.use('/health', healthRoutes);
-app.use('/swagger', swaggerRoutes);
+//swagger is now served up from the /api/vi path so that it can be version specific
+//app.use('/swagger', swaggerRoutes);
 app.use('/api/v1', apiV1Routes);
 
 // default path to serve up index.html (single page application)
@@ -49,7 +50,7 @@ app.all('', (req, res) => {
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
   logger.info(`App UI available http://localhost:${port}`);
-  logger.info(`Swagger UI available http://localhost:${port}/swagger/api-docs`);
+  logger.info(`Swagger UI available http://localhost:${port}/api/v1/api-docs`);
 });
 
 // error handler for unmatched routes or api calls

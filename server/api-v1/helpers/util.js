@@ -17,10 +17,10 @@
 const querystring = require('querystring');
 const https = require('https');
 const log4js = require('log4js');
-const logger = log4js.getLogger('sms-service [helpers - util]');
+const logger = log4js.getLogger('[APP] sms-service [helpers - util]');
 logger.level = process.env.LOG_LEVEL ? process.env.LOG_LEVEL : 'info';
 const ibmcloudUrl = process.env.IBMCLOUD_URL ? process.env.IBMCLOUD_URL : 'cloud.ibm.com';
-logger.info('[api-v1-controller] - The IBM Cloud URL is ' + ibmcloudUrl);
+logger.debug('The IBM Cloud URL is ' + ibmcloudUrl);
 
 /**
  * Util object
