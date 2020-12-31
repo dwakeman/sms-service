@@ -1,8 +1,16 @@
 {
     "swagger": "2.0",
     "info": {
-      "version": "1.0.3",
-      "title": "SMS Service API"
+      "version": "dynamically updated by app",
+      "title": "SMS Service API",
+      "description": "Microservice for sending SMS messages using Twilio",
+      "contact": {
+        "email": "dwakeman@us.ibm.com"
+      },
+      "license": {
+        "name": "Apache 2.0",
+        "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+      }
     },
     "consumes": [
       "application/json"

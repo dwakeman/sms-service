@@ -1,20 +1,25 @@
-swagger: '2.0'
+swagger: "2.0"
 
 info:
-  version: "1.0.3"
-  title: SMS Service API
-
+  version: "dynamically updated by app"
+  title: "SMS Service API"
+  description: "Microservice for sending SMS messages using Twilio"
+  contact:
+    email: "dwakeman@us.ibm.com"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
 consumes:
-  - application/json
+  - "application/json"
 
 produces:
-  - application/json
+  - "application/json"
 
 paths:
   /health:
     get:
-      operationId: get
-      description: Get health status of SMS Service API
+      operationId: "get"
+      description: "Get health status of SMS Service API"
       responses:
         200:
           description: "Health check response"
@@ -24,8 +29,8 @@ paths:
             application/json: { "status": "UP"}
   /api/v1/messages:
    post:
-      operationId: postMessages
-      description: Send an SMS Message
+      operationId: "postMessages"
+      description: "Send an SMS Message"
       consumes:
       - "application/json"
       produces:
