@@ -41,10 +41,20 @@ app.use('/health', healthRoutes);
 //app.use('/swagger', swaggerRoutes);
 app.use('/api/v1', apiV1Routes);
 
+// set up docs
+app.use(express.static(path.join(__dirname, '../public')));
+app.use(express.static(path.join(__dirname, '../public/docs')));
+app.get('/docs', (req, res) => {
+    res.status(200).sendFile(path.join(__dirname, '../public/docs', 'index.html'));
+});
+
 // default path to serve up index.html (single page application)
-app.all('', (req, res) => {
+//app.all('', (req, res) => {
+app.get('/', (req, res) => {
   res.status(200).sendFile(path.join(__dirname, '../public', 'index.html'));
 });
+
+
 
 // start node server
 const port = process.env.PORT || 3000;

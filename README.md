@@ -19,6 +19,9 @@ copyright:
     <img src="https://img.shields.io/badge/license-Apache2-blue.svg?style=flat" alt="Apache 2">
 </p>
 
+# Documentation
+
+The documentation for this application can be found <a href="https://dwakeman.github.io/sms-service/" target="_blank">here</a>.
 
 # Node.js Express starter application
 
@@ -27,7 +30,7 @@ This starter application is a simple microservice that incorporates the [Express
 A microservice is an individual component of an application that follows the **microservice architecture** - an architectural style that structures an application as a collection of loosely coupled services, each of which implements business capability. The microservice exposes a RESTful API matching a [Swagger](http://swagger.io) definition.
 
 You can access the cloud native microservice capabilities at the following endpoints:
-- The [Swagger UI](http://swagger.io/swagger-ui/) is running on: `/swagger/api-docs`
+- The [Swagger UI](http://swagger.io/swagger-ui/) is running on: `/api/v1/api-docs`
 - Health endpoint: `/health`
 
 The microservice is ready to run locally in a Docker container or with the Node.js runtime that is hosted on your local operating system. Use the [IBM Cloud CLI Developer Tools commands](https://cloud.ibm.com/docs/cli?topic=cli-idt-cli) (`ibmcloud dev`) for local development.
